@@ -1,0 +1,7 @@
+{
+  "remoteDS": {
+    "url": "http://api.defiderm.com:8888/v1",
+    "name": "remoteDS",
+    "connector": "remote"
+  }
+}

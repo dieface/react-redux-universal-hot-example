@@ -82,6 +82,8 @@
     }
   },
   "dependencies": {
+    "loopback": "2.26.0",
+    "loopback-boot": "2.15.0",
     "babel": "~5.8.29",
     "babel-plugin-typecheck": "^2.0.0",
     "body-parser": "^1.14.1",

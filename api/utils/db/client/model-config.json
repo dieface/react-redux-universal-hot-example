@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "sources": [
+      "../common/models"
+    ]
+  },
+  "Person": {
+    "dataSource": "remoteDS"
+  },
+  "category": {
+    "dataSource": "remoteDS"
+  }
+}

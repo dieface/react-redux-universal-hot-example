@@ -1,11 +1,11 @@
-const LOAD = 'products/LOAD';
-const LOAD_SUCCESS = 'products/LOAD_SUCCESS';
-const LOAD_FAIL = 'products/LOAD_FAIL';
-const EDIT_START = 'products/EDIT_START';
-const EDIT_STOP = 'products/EDIT_STOP';
-const SAVE = 'products/SAVE';
-const SAVE_SUCCESS = 'products/SAVE_SUCCESS';
-const SAVE_FAIL = 'products/SAVE_FAIL';
+const LOAD = 'redux-example/products/LOAD';
+const LOAD_SUCCESS = 'redux-example/products/LOAD_SUCCESS';
+const LOAD_FAIL = 'redux-example/products/LOAD_FAIL';
+const EDIT_START = 'redux-example/products/EDIT_START';
+const EDIT_STOP = 'redux-example/products/EDIT_STOP';
+const SAVE = 'redux-example/products/SAVE';
+const SAVE_SUCCESS = 'redux-example/products/SAVE_SUCCESS';
+const SAVE_FAIL = 'redux-example/products/SAVE_FAIL';
 
 const initialState = {
   loaded: false,
@@ -98,7 +98,7 @@ export function save(product) {
     types: [SAVE, SAVE_SUCCESS, SAVE_FAIL],
     id: product.id,
     promise: (client) => client.post('/product/update', {
-      data:product
+      data: product
     })
   };
 }

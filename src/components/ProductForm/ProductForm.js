@@ -3,16 +3,16 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {reduxForm} from 'redux-form';
 import productValidation, {colors} from './productValidation';
-import * as productActions from 'redux/modules/widgets';
+import * as productActions from 'redux/modules/products';
 
 @connect(
   state => ({
-    saveError: state.widgets.saveError
+    saveError: state.products.saveError
   }),
   dispatch => bindActionCreators(productActions, dispatch)
 )
 @reduxForm({
-  form: 'widget',
+  form: 'product',
   fields: ['id', 'color', 'sprocketCount', 'owner'],
   validate: productValidation
 })

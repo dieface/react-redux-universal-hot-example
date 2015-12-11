@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import DocumentMeta from 'react-document-meta';
 import {connect} from 'react-redux';
-import * as productActions from 'redux/modules/widgets';
-import {isLoaded, load as loadProducts} from 'redux/modules/widgets';
+import * as productActions from 'redux/modules/products';
+import {isLoaded, load as loadProducts} from 'redux/modules/products';
 import {initializeWithKey} from 'redux-form';
 import connectData from 'helpers/connectData';
 import { ProductForm } from 'components';
@@ -17,10 +17,10 @@ function fetchDataDeferred(getState, dispatch) {
 @connectData(null, fetchDataDeferred)
 @connect(
   state => ({
-    products: state.widgets.data,
-    editing: state.widgets.editing,
-    error: state.widgets.error,
-    loading: state.widgets.loading
+    products: state.products.data,
+    editing: state.products.editing,
+    error: state.products.error,
+    loading: state.products.loading
   }),
   {...productActions, initializeWithKey })
 export default class Products extends Component {
