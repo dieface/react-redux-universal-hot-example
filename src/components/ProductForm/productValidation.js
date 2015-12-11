@@ -1,10 +1,6 @@
-import {createValidator, required, maxLength, integer, oneOf} from 'utils/validation';
-
-export const colors = ['Blue', 'Fuchsia', 'Green', 'Orange', 'Red', 'Taupe'];
+import { createValidator, required, maxLength } from 'utils/validation';
 
 const productValidation = createValidator({
-  color: [required, oneOf(colors)],
-  sprocketCount: [required, integer],
-  owner: [required, maxLength(30)]
+  name: [required, maxLength(30)]
 });
 export default productValidation;

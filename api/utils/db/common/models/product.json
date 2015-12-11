@@ -1,0 +1,57 @@
+{
+  "name": "product",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "id": true,
+      "type": "number"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "brand": {
+      "type": "string"
+    },
+    "imgUrl": {
+      "type": "string"
+    },
+    "points": {
+      "type": "number"
+    },
+    "price": {
+      "type": "string"
+    },
+    "volume": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "launchedAt": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "photo": {
+      "type": "hasOne",
+      "model": "photo"
+    },
+    "category": {
+      "type": "belongsTo",
+      "model": "category"
+    },
+    "users": {
+      "type": "hasMany",
+      "model": "user",
+      "through": "usage"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

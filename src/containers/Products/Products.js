@@ -7,6 +7,7 @@ import {initializeWithKey} from 'redux-form';
 import connectData from 'helpers/connectData';
 import { ProductForm } from 'components';
 import config from '../../config';
+import { Pagination } from 'react-bootstrap';
 
 function fetchDataDeferred(getState, dispatch) {
   if (!isLoaded(getState())) {
@@ -18,20 +19,25 @@ function fetchDataDeferred(getState, dispatch) {
 @connect(
   state => ({
     products: state.products.data,
+    count: state.products.count,
     editing: state.products.editing,
     error: state.products.error,
-    loading: state.products.loading
+    loading: state.products.loading,
+    activePage: state.products.activePage
   }),
   {...productActions, initializeWithKey })
 export default class Products extends Component {
   static propTypes = {
     products: PropTypes.array,
+    count: PropTypes.number,
     error: PropTypes.string,
     loading: PropTypes.bool,
+    activePage: PropTypes.number,
     initializeWithKey: PropTypes.func.isRequired,
     editing: PropTypes.object.isRequired,
     load: PropTypes.func.isRequired,
-    editStart: PropTypes.func.isRequired
+    editStart: PropTypes.func.isRequired,
+    changePage: PropTypes.func.isRequired
   }
 
   render() {
@@ -39,30 +45,32 @@ export default class Products extends Component {
       const {editStart} = this.props; // eslint-disable-line no-shadow
       return () => editStart(String(product.id));
     };
-    const {products, error, editing, loading, load} = this.props;
+
+    const handleFlip = (event, selectedEvent) => {
+      const {changePage} = this.props; // eslint-disable-line no-shadow
+      changePage(selectedEvent.eventKey);
+    };
+
+    const { products, count, error, editing, loading, load,
+      activePage
+    } = this.props;
+
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
     }
+
     const styles = require('./Products.scss');
+
     return (
       <div className={styles.products + ' container'}>
         <h1>
-          Products
+          Products ({count})
           <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}>
             <i className={refreshClassName}/> {' '} Reload Products
           </button>
         </h1>
-        <DocumentMeta title={config.app.title + ': Products'}/>
-        <p>
-          If you hit refresh on your browser, the data loading will take place on the server before the page is returned.
-          If you navigated here from another page, the data was fetched from the client after the route transition.
-          This uses the static method <code>fetchDataDeferred</code>. To block a route transition until some data is loaded, use <code>fetchData</code>.
-          To always render before loading data, even on the server, use <code>componentDidMount</code>.
-        </p>
-        <p>
-          This products are stored in your session, so feel free to edit it and refresh.
-        </p>
+        <DocumentMeta title={config.app.title + '| Products'}/>
         {error &&
         <div className="alert alert-danger" role="alert">
           <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -74,9 +82,7 @@ export default class Products extends Component {
           <thead>
           <tr>
             <th className={styles.idCol}>ID</th>
-            <th className={styles.colorCol}>Color</th>
-            <th className={styles.sprocketsCol}>Sprockets</th>
-            <th className={styles.ownerCol}>Owner</th>
+            <th className={styles.nameCol}>Name</th>
             <th className={styles.buttonCol}></th>
           </tr>
           </thead>
@@ -86,9 +92,7 @@ export default class Products extends Component {
               <ProductForm formKey={String(product.id)} key={String(product.id)} initialValues={product}/> :
               <tr key={product.id}>
                 <td className={styles.idCol}>{product.id}</td>
-                <td className={styles.colorCol}>{product.color}</td>
-                <td className={styles.sprocketsCol}>{product.sprocketCount}</td>
-                <td className={styles.ownerCol}>{product.owner}</td>
+                <td className={styles.nameCol}>{product.name}</td>
                 <td className={styles.buttonCol}>
                   <button className="btn btn-primary" onClick={handleEdit(product)}>
                     <i className="fa fa-pencil"/> Edit
@@ -98,6 +102,18 @@ export default class Products extends Component {
           }
           </tbody>
         </table>}
+
+        <Pagination
+                prev
+                next
+                first
+                last
+                ellipsis
+                items={Math.floor(count / 10) + (count % 10 > 0 ? 1 : 0)}
+                maxButtons={10}
+                activePage={activePage}
+                onSelect={handleFlip}
+                />
       </div>
     );
   }

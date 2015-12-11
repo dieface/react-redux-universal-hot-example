@@ -9,5 +9,8 @@
   },
   "category": {
     "dataSource": "remoteDS"
+  },
+  "product": {
+    "dataSource": "remoteDS"
   }
 }

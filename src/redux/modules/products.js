@@ -6,11 +6,15 @@ const EDIT_STOP = 'redux-example/products/EDIT_STOP';
 const SAVE = 'redux-example/products/SAVE';
 const SAVE_SUCCESS = 'redux-example/products/SAVE_SUCCESS';
 const SAVE_FAIL = 'redux-example/products/SAVE_FAIL';
+const FLIP = 'redux-example/products/FLIP';
+const FLIP_SUCCESS = 'redux-example/products/FLIP_SUCCESS';
+const FLIP_FAIL = 'redux-example/products/FLIP_FAIL';
 
 const initialState = {
   loaded: false,
   editing: {},
-  saveError: {}
+  saveError: {},
+  activePage: 1 
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -25,7 +29,8 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        data: action.result,
+        data: action.result.products,
+        count: action.result.count,
         error: null
       };
     case LOAD_FAIL:
@@ -77,6 +82,25 @@ export default function reducer(state = initialState, action = {}) {
           [action.id]: action.error
         }
       } : state;
+    case FLIP:
+      return {
+        ...state,
+        loading: true
+      };
+    case FLIP_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        data: action.result.products,
+        activePage: action.result.page
+      };
+    case FLIP_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
     default:
       return state;
   }
@@ -89,7 +113,7 @@ export function isLoaded(globalState) {
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/product/load/param1/param2') // params not used, just shown as demonstration
+    promise: (client) => client.get('/product/load') // params not used, just shown as demonstration
   };
 }
 
@@ -109,4 +133,13 @@ export function editStart(id) {
 
 export function editStop(id) {
   return { type: EDIT_STOP, id };
+}
+
+export function changePage(page) {
+  console.log('redux for changePage');
+
+  return {
+    types: [FLIP, FLIP_SUCCESS, FLIP_FAIL],
+    promise: (client) => client.get('/product/load?page=' + page) // params not used, just shown as demonstration
+  };
 }

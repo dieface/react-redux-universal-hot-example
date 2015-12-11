@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {reduxForm} from 'redux-form';
-import productValidation, {colors} from './productValidation';
+import productValidation from './productValidation';
 import * as productActions from 'redux/modules/products';
 
 @connect(
@@ -13,7 +13,7 @@ import * as productActions from 'redux/modules/products';
 )
 @reduxForm({
   form: 'product',
-  fields: ['id', 'color', 'sprocketCount', 'owner'],
+  fields: ['id', 'name'],
   validate: productValidation
 })
 export default class ProductForm extends Component {
@@ -31,25 +31,15 @@ export default class ProductForm extends Component {
   };
 
   render() {
-    const { editStop, fields: {id, color, sprocketCount, owner}, formKey, handleSubmit, invalid,
+    const { editStop, fields: {id, name}, formKey, handleSubmit, invalid,
       pristine, save, submitting, saveError: { [formKey]: saveError }, values } = this.props;
     const styles = require('containers/Products/Products.scss');
     return (
       <tr className={submitting ? styles.saving : ''}>
         <td className={styles.idCol}>{id.value}</td>
-        <td className={styles.colorCol}>
-          <select name="color" className="form-control" {...color}>
-            {colors.map(valueColor => <option value={valueColor} key={valueColor}>{valueColor}</option>)}
-          </select>
-          {color.error && color.touched && <div className="text-danger">{color.error}</div>}
-        </td>
-        <td className={styles.sprocketsCol}>
-          <input type="text" className="form-control" {...sprocketCount}/>
-          {sprocketCount.error && sprocketCount.touched && <div className="text-danger">{sprocketCount.error}</div>}
-        </td>
-        <td className={styles.ownerCol}>
-          <input type="text" className="form-control" {...owner}/>
-          {owner.error && owner.touched && <div className="text-danger">{owner.error}</div>}
+        <td className={styles.nameCol}>
+          <input type="text" className="form-control" {...name}/>
+          {name.error && name.touched && <div className="text-danger">{name.error}</div>}
         </td>
         <td className={styles.buttonCol}>
           <button className="btn btn-default"
