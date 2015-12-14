@@ -28,7 +28,7 @@ function fetchDataDeferred(getState, dispatch) {
   {...productActions, initializeWithKey })
 export default class Products extends Component {
   static propTypes = {
-    products: PropTypes.array,
+    products: PropTypes.object,
     count: PropTypes.number,
     error: PropTypes.string,
     loading: PropTypes.bool,
@@ -77,7 +77,7 @@ export default class Products extends Component {
           {' '}
           {error}
         </div>}
-        {products && products.length &&
+        {products && JSON.stringify(products) !== '{}' &&
         <table className="table table-striped">
           <thead>
           <tr>
@@ -88,13 +88,13 @@ export default class Products extends Component {
           </thead>
           <tbody>
           {
-            products.map((product) => editing[product.id] ?
-              <ProductForm formKey={String(product.id)} key={String(product.id)} initialValues={product}/> :
-              <tr key={product.id}>
-                <td className={styles.idCol}>{product.id}</td>
-                <td className={styles.nameCol}>{product.name}</td>
+            Object.values(products).map((prod) => editing[prod.id] ?
+              <ProductForm formKey={String(prod.id)} key={String(prod.id)} initialValues={prod}/> :
+              <tr key={prod.id}>
+                <td className={styles.idCol}>{prod.id}</td>
+                <td className={styles.nameCol}>{prod.name}</td>
                 <td className={styles.buttonCol}>
-                  <button className="btn btn-primary" onClick={handleEdit(product)}>
+                  <button className="btn btn-primary" onClick={handleEdit(prod)}>
                     <i className="fa fa-pencil"/> Edit
                   </button>
                 </td>

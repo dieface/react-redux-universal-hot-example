@@ -11,7 +11,13 @@ export function getProducts(resolve, reject, page) {
     }
 
     Product.count(function(err, total) {
-      resolve({products: products, count: total, page: page});
+      let obj = {};
+
+      products.forEach((p, index) => {
+        obj[p.id] = p
+      });
+
+      resolve({products: obj, count: total, page: page});
     });
   });
 }

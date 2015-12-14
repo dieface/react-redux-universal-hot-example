@@ -14,7 +14,7 @@ const initialState = {
   loaded: false,
   editing: {},
   saveError: {},
-  activePage: 1 
+  activePage: 1
 };
 
 export default function reducer(state = initialState, action = {}) {
