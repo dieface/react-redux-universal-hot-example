@@ -1,11 +1,23 @@
-import load from './load';
+const app = require('../../utils/db/client/client');
+const Product = app.models.product;
+
+function updateProduct(resolve, reject, product) {
+  console.log(product);
+
+  Product.upsert(product, (err, updated) => {
+    if(err) {
+      reject(err);
+      return;
+    }
+
+    resolve(updated);
+  });
+}
 
 export default function update(req) {
   return new Promise((resolve, reject) => {
     // write to database
-    setTimeout(() => {
-      const product = req.body;
-      resolve(product);
-    }, 1500); // simulate async db write
+    const product = req.body;
+    updateProduct(resolve, reject, product);
   });
 }

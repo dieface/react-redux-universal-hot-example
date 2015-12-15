@@ -83,22 +83,44 @@ export default class Products extends Component {
           <tr>
             <th className={styles.idCol}>ID</th>
             <th className={styles.nameCol}>Name</th>
+            <th className={styles.brandCol}>Brand</th>
+            <th className={styles.imgCol}>Image</th>
+            <th className={styles.pointsCol}>Points</th>
+            <th className={styles.priceCol}>Price</th>
+            <th className={styles.volumeCol}>Volume</th>
+            <th className={styles.descriptionCol}>Description</th>
+            <th className={styles.launchedAtCol}>Launched Date</th>
+            <th className={styles.bodyPartCol}>Body Part</th>
+            <th className={styles.categoryCol}>Category</th>
             <th className={styles.buttonCol}></th>
           </tr>
           </thead>
           <tbody>
           {
-            Object.values(products).map((prod) => editing[prod.id] ?
+            Object.values(products).map((prod) => {
+              return editing[prod.id] ?
               <ProductForm formKey={String(prod.id)} key={String(prod.id)} initialValues={prod}/> :
               <tr key={prod.id}>
                 <td className={styles.idCol}>{prod.id}</td>
                 <td className={styles.nameCol}>{prod.name}</td>
+                <td className={styles.brandCol}>{prod.brand}</td>
+                <td className={styles.imgCol}>
+                  <img src={prod.imgUrl} width="50" height="50" />
+                </td>
+                <td className={styles.pointsCol}>{prod.points}</td>
+                <td className={styles.priceCol}>{prod.price}</td>
+                <td className={styles.volumeCol}>{prod.volume}</td>
+                <td className={styles.descriptionCol}>{prod.description}</td>
+                <td className={styles.launchedAtCol}>{prod.launchedAt}</td>
+                <td className={styles.bodyPartCol}>{prod.bodyPart}</td>
+                <td className={styles.categoryCol}>{prod.categoryName}</td>
                 <td className={styles.buttonCol}>
                   <button className="btn btn-primary" onClick={handleEdit(prod)}>
                     <i className="fa fa-pencil"/> Edit
                   </button>
                 </td>
-              </tr>)
+              </tr>;
+            })
           }
           </tbody>
         </table>}

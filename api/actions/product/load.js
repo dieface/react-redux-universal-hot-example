@@ -2,15 +2,15 @@ const app = require('../../utils/db/client/client');
 const Product = app.models.product;
 const perPage = 10;
 
-export function getProducts(resolve, reject, page) {
+function getProducts(resolve, reject, page) {
   const skip = perPage * (page - 1);
-  Product.find({skip: skip, limit: perPage}, function(err, products) {
+  Product.find({skip: skip, limit: perPage}, (err, products) => {
     if(err) {
       reject(err);
       return;
     }
 
-    Product.count(function(err, total) {
+    Product.count((err, total) => {
       let obj = {};
 
       products.forEach((p, index) => {
