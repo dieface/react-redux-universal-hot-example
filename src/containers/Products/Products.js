@@ -62,6 +62,11 @@ export default class Products extends Component {
 
     const styles = require('./Products.scss');
 
+    // product table pre-requirements
+    const productSchema = ['id', 'name', 'brand', 'imgUrl', 'points', 'price', 'volume', 'description', 'launchedAt'];
+    const cols = productSchema.length;
+    const colWidth = 75 / cols + '%';
+
     return (
       <div className={styles.products + ' container'}>
         <h1>
@@ -81,21 +86,8 @@ export default class Products extends Component {
         <table className="table table-striped">
           <thead>
           <tr>
-            <th className={styles.idCol}>ID</th>
             {(() => {
-              const prod = products[Object.keys(products)[0]];
-              console.log(prod);
-
-              const { id,
-                createdAt,
-                lastModifiedAt,
-                ...others
-              } = prod;
-
-              const cols = Object.keys(others).length + 1;
-              const colWidth = 70 / cols + '%';
-
-              return Object.keys(others).map((key) => {
+              return productSchema.map((key) => {
                 return <th key={'th-' + key} style={{width: colWidth}}>{key}</th>;
               });
             })()}
@@ -105,29 +97,20 @@ export default class Products extends Component {
           <tbody>
           {
             Object.values(products).map((prod) => {
-              const { id,
-                createdAt,
-                lastModifiedAt,
-                ...others
-              } = prod;
-
-              const cols = Object.keys(others).length + 1;
-              const colWidth = 70 / cols + '%';
-
+              const id = prod.id;
               return editing[id] ?
               <ProductForm formKey={String(id)} key={String(id)} initialValues={prod}/> :
               <tr key={id} style={{width: colWidth}}>
-                <td className={styles.idCol}>{id}</td>
-                {Object.keys(others).map((key) => {
+                {productSchema.map((key) => {
                   if (key === 'imgUrl') {
                     return (<td key={id + key} style={{width: colWidth}}>
                       <img src={prod[key]} style={{width: '100%', height: '50px'}} />
                     </td>);
                   }
 
-                  return <td key={id + key} style={{width: colWidth}}>
+                  return (<td key={id + key} style={{width: colWidth}}>
                     <div className={styles.cell}>{prod[key]}</div>
-                  </td>;
+                  </td>);
                 })}
                 <td className={styles.buttonCol}>
                   <button className="btn btn-primary" onClick={handleEdit(prod)}>

@@ -4,7 +4,7 @@ const perPage = 10;
 
 function getProducts(resolve, reject, page) {
   const skip = perPage * (page - 1);
-  Product.find({skip: skip, limit: perPage}, (err, products) => {
+  Product.find({skip: skip, limit: perPage, include: "category"}, (err, products) => {
     if(err) {
       reject(err);
       return;
@@ -25,7 +25,6 @@ function getProducts(resolve, reject, page) {
 export default function load(req) {
   return new Promise((resolve, reject) => {
     const page = req.query && req.query.page;
-    console.log('======== page: ' + page);
 
     // make async call to database
     if(!page) {

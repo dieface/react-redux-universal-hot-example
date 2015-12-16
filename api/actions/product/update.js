@@ -2,8 +2,6 @@ const app = require('../../utils/db/client/client');
 const Product = app.models.product;
 
 function updateProduct(resolve, reject, product) {
-  console.log(product);
-
   Product.upsert(product, (err, updated) => {
     if(err) {
       reject(err);

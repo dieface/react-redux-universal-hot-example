@@ -2,15 +2,12 @@
   .refreshBtn {
     margin-left: 20px;
   }
-  .idCol {
-    width: 5%;
-  }
   .cell {
     overflow: hidden;
     -webkit-line-clamp: 3;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-box-orient: vertical;    
+    -webkit-box-orient: vertical;
   }
   .buttonCol {
     width: 25%;
