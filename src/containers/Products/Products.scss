@@ -5,35 +5,12 @@
   .idCol {
     width: 5%;
   }
-  .nameCol {
-    width: 20%;
-  }
-  .brandCol {
-    width: 20%;
-  }
-  .imgCol {
-    width: 30%;
-  }
-  .pointsCol {
-    width: 30%;
-  }
-  .priceCol {
-    width: 30%;
-  }
-  .volumeCol {
-    width: 30%;
-  }
-  .descriptionCol {
-    width: 30%;
-  }
-  .launchedAtCol {
-    width: 30%;
-  }
-  .bodyPartCol {
-    width: 30%;
-  }
-  .categoryNameCol {
-    width: 30%;
+  .cell {
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;    
   }
   .buttonCol {
     width: 25%;
