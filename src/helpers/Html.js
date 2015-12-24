@@ -41,12 +41,10 @@ export default class Html extends Component {
           {/* can smoothen the initial style flash (flicker) on page load in development mode. */}
           {/* ideally one could also include here the style for the current page (Home.scss, About.scss, etc) */}
           {/* Object.keys(assets.styles).length === 0 ? <style dangerouslySetInnerHTML={{__html: require('../theme/bootstrap.config.js') + require('../containers/App/App.scss')._style}}/> : null */}
-          <link media="screen" rel="stylesheet" type="text/css" href="/css/vendor/pace/pace.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/css/vendor/perfect-scrollbar/perfect-scrollbar.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/css/vendor/morris/morris.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/bower_components/codemirror/lib/codemirror.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/bower_components/codemirror/theme/ambiance.css"/>
-          <link media="screen" rel="stylesheet" type="text/css" href="/demo.css"/>
           <link media="screen,print" rel="stylesheet" type="text/css" href="/css/demo/blessed/ltr/main-blessed1.css"/>
           <link media="screen,print" rel="stylesheet" type="text/css" href="/css/demo/blessed/ltr/main.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/css/demo/blessed/ltr/theme.css"/>
@@ -54,34 +52,25 @@ export default class Html extends Component {
           <link media="screen" rel="stylesheet" type="text/css" href="/css/demo/blessed/ltr/colors.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/css/demo/blessed/ltr/font-faces.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/css/fonts/demo/fonts.css"/>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/common.js"></script>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/map.js"></script>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/util.js"></script>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/geometry.js"></script>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/directions.js"></script>
-          <script type="text/javascript" src="/js/demo/demo.js"></script>
           <link media="screen" rel="stylesheet" type="text/css" href="/demo.css"/>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/onion.js"></script>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/stats.js"></script>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/controls.js"></script>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/poly.js"></script>
-          <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/23/3/intl/zh_tw/marker.js"></script>
         </head>
         <body>
-          <div id='pace-loader' class='pace-big'></div>
-          <div id='app-preloader'></div>
           <div id="content" dangerouslySetInnerHTML={{__html: content}}/>
-          <div id='blueimp-gallery' class='blueimp-gallery blueimp-gallery-controls'>
-            <div class='slides'></div>
-            <h3 class='title'></h3>
-            <p class="description"></p>
-            <a class='prev'>‹</a>
-            <a class='next'>›</a>
-            <a class='close'>×</a>
-            <a class='play-pause'></a>
-            <ol class='indicator'></ol>
+          <div id='blueimp-gallery' className='blueimp-gallery blueimp-gallery-controls'>
+            <div className='slides'></div>
+            <h3 className='title'></h3>
+            <p className="description"></p>
+            <a className='prev'>‹</a>
+            <a className='next'>›</a>
+            <a className='close'>×</a>
+            <a className='play-pause'></a>
+            <ol className='indicator'></ol>
           </div>
-          <script type='text/javascript' src='/js/common/pace/pace.js'></script>
+
+          <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
+          {/*Main script will effect rubix's UI*/}
+          <script src={assets.javascript.main} charSet="UTF-8"/>
+
           <script type='text/javascript' src='/js/common/uuid/uuid.js'></script>
           <script type='text/javascript' src='/bower_components/modernizr/modernizr.js'></script>
           <script type='text/javascript' src='/bower_components/codemirror/lib/codemirror.js'></script>
@@ -98,7 +87,6 @@ export default class Html extends Component {
           <script type='text/javascript' src='/bower_components/react/react-with-addons.js'></script>
           <script type='text/javascript' src='/js/vendor/datatables/datatables.js'></script>
           <script type='text/javascript' src='/js/common/react-l20n/react-l20n.js'></script>
-          <script type='text/javascript' src='/js/common/rubix-bootstrap/rubix-bootstrap.js'></script>
           <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
           <script type='text/javascript' src='/js/vendor/gmaps/gmaps.js'></script>
           <script type='text/javascript' src='/js/vendor/bootstrap/bootstrap.js'></script>
@@ -131,8 +119,6 @@ export default class Html extends Component {
           <script type='text/javascript' src='/bower_components/c3/c3.js'></script>
           <script type='text/javascript' src='/js/common/rubix/rubix.js'></script>
           <script type='text/javascript' src='/js/common/globals.js'></script>
-          <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
-          <script src={assets.javascript.main} charSet="UTF-8"/>
         </body>
       </html>
     );
