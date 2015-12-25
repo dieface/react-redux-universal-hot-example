@@ -82,6 +82,9 @@
     }
   },
   "dependencies": {
+    "d3": "^3.5.12",
+    "jquery": "^2.1.4",
+    "classnames": "^2.1.2",
     "loopback": "2.26.0",
     "loopback-boot": "2.15.0",
     "babel": "~5.8.29",

@@ -87,6 +87,7 @@ export default class Html extends Component {
           <script type='text/javascript' src='/bower_components/react/react-with-addons.js'></script>
           <script type='text/javascript' src='/js/vendor/datatables/datatables.js'></script>
           <script type='text/javascript' src='/js/common/react-l20n/react-l20n.js'></script>
+          <script type='text/javascript' src='/js/common/rubix-bootstrap/rubix-bootstrap.js'></script>
           <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
           <script type='text/javascript' src='/js/vendor/gmaps/gmaps.js'></script>
           <script type='text/javascript' src='/js/vendor/bootstrap/bootstrap.js'></script>
