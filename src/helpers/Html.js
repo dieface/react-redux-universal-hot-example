@@ -70,56 +70,6 @@ export default class Html extends Component {
           <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
           {/*Main script will effect rubix's UI*/}
           <script src={assets.javascript.main} charSet="UTF-8"/>
-
-          <script type='text/javascript' src='/js/common/uuid/uuid.js'></script>
-          <script type='text/javascript' src='/bower_components/modernizr/modernizr.js'></script>
-          <script type='text/javascript' src='/bower_components/codemirror/lib/codemirror.js'></script>
-          <script type='text/javascript' src='/bower_components/codemirror/mode/javascript/javascript.js'></script>
-          <script type='text/javascript' src='/bower_components/jquery/dist/jquery.js'></script>
-          <script type='text/javascript' src='/bower_components/jquery-ui/jquery-ui.min.js'></script>
-          <script type='text/javascript' src='/bower_components/moment/moment.js'></script>
-          <script type='text/javascript' src='/bower_components/eventemitter2/lib/eventemitter2.js'></script>
-          <script type='text/javascript' src='/bower_components/vex/js/vex.combined.min.js'></script>
-          <script type='text/javascript' src='/bower_components/chartjs/Chart.js'></script>
-          <script type='text/javascript' src='/bower_components/trumbowyg/dist/trumbowyg.js'></script>
-          <script type='text/javascript' src='/bower_components/blueimp-gallery/js/blueimp-gallery.js'></script>
-          <script type='text/javascript' src='/js/vendor/p-scrollbar/min/perfect-scrollbar.min.js'></script>
-          <script type='text/javascript' src='/bower_components/react/react-with-addons.js'></script>
-          <script type='text/javascript' src='/js/vendor/datatables/datatables.js'></script>
-          <script type='text/javascript' src='/js/common/react-l20n/react-l20n.js'></script>
-          <script type='text/javascript' src='/js/common/rubix-bootstrap/rubix-bootstrap.js'></script>
-          <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
-          <script type='text/javascript' src='/js/vendor/gmaps/gmaps.js'></script>
-          <script type='text/javascript' src='/js/vendor/bootstrap/bootstrap.js'></script>
-          <script type='text/javascript' src='/js/vendor/bootstrap-slider/bootstrap-slider.js'></script>
-          <script type='text/javascript' src='/js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js'></script>
-          <script type='text/javascript' src='/js/vendor/ion.tabs/ion.tabs.min.js'></script>
-          <script type='text/javascript' src='/js/vendor/ion.rangeSlider/ion.rangeSlider.min.js'></script>
-          <script type='text/javascript' src='/js/vendor/d3/d3.js'></script>
-          <script type='text/javascript' src='/js/vendor/jquery.knob/jquery.knob.js'></script>
-          <script type='text/javascript' src='/js/vendor/leaflet/leaflet.js'></script>
-          <script type='text/javascript' src='/js/vendor/sparklines/sparklines.js'></script>
-          <script type='text/javascript' src='/js/vendor/switchery/switchery.js'></script>
-          <script type='text/javascript' src='/js/vendor/raphael/raphael.js'></script>
-          <script type='text/javascript' src='/js/vendor/messenger/messenger.min.js'></script>
-          <script type='text/javascript' src='/js/vendor/select2/select2.js'></script>
-          <script type='text/javascript' src='/js/vendor/xeditable/xeditable.js'></script>
-          <script type='text/javascript' src='/js/vendor/typeahead/typeahead.js'></script>
-          <script type='text/javascript' src='/js/vendor/jquery-steps/jquery-steps.js'></script>
-          <script type='text/javascript' src='/js/vendor/jquery-validate/jquery-validate.js'></script>
-          <script type='text/javascript' src='/js/vendor/tablesaw/tablesaw.js'></script>
-          <script type='text/javascript' src='/js/vendor/fullcalendar/fullcalendar.js'></script>
-          <script type='text/javascript' src='/js/vendor/nestable/nestable.js'></script>
-          <script type='text/javascript' src='/js/vendor/dropzone/dropzone.js'></script>
-          <script type='text/javascript' src='/js/vendor/jcrop/color.js'></script>
-          <script type='text/javascript' src='/js/vendor/jcrop/jcrop.js'></script>
-          <script type='text/javascript' src='/js/vendor/prism/prism.js'></script>
-          <script type='text/javascript' src='/js/vendor/morris/morris.js'></script>
-          <script type='text/javascript' src='/js/vendor/timeline/timeline.js'></script>
-          <script type='text/javascript' src='/js/vendor/holder/holder.js'></script>
-          <script type='text/javascript' src='/bower_components/c3/c3.js'></script>
-          <script type='text/javascript' src='/js/common/rubix/rubix.js'></script>
-          <script type='text/javascript' src='/js/common/globals.js'></script>
         </body>
       </html>
     );

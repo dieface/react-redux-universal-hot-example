@@ -712,4 +712,5 @@ export default class StackedAreaSeries {
   };
 }
 
+// export default StackedAreaSeries;
 /*eslint-disable */

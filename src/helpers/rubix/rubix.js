@@ -1,10 +1,16 @@
 /*eslint-disable */
 
-import StackedAreaSeries from './StackedAreaSeries';
-import PieDonut from './PieDonut';
-import LineSeries from './LineSeries';
-import ColumnSeries from './ColumnSeries';
-import AreaSeries from './AreaSeries';
+// const RubixStackedAreaSeries = require('./StackedAreaSeries');
+// const RubixPieDonut = require('./PieDonut');
+// const RubixLineSeries = require('./LineSeries');
+// const RubixColumnSeries = require('./ColumnSeries');
+// const RubixAreaSeries = require('./AreaSeries');
+
+import RubixStackedAreaSeries from './StackedAreaSeries';
+import RubixPieDonut from './PieDonut';
+import RubixLineSeries from './LineSeries';
+import RubixColumnSeries from './ColumnSeries';
+import RubixAreaSeries from './AreaSeries';
 
 const $ = require('jquery');
 const d3 = require('d3');
@@ -2380,7 +2386,7 @@ export default class Rubix {
     if (this.charts.hasOwnProperty(opts.name)) {
       throw new Error("Series exists: " + name);
     }
-    let line_series = new LineSeries(this, opts);
+    let line_series = this.LineSeries(this, opts);
     this.charts[line_series.name] = line_series;
     this.legend.append("<div class='"+this.masterId+"-legend-labels' data-name='"+line_series.name+"' style='cursor: pointer; display: inline-block; font-weight: bold; margin-right: 10px; color: "+line_series.opts.color+"'><span style='font-size: 22px;'>■ </span><span style='font-size: 12px; position:relative; top: -3px; left: -2px;'>"+line_series.name+"</span></div>");
     this.resetLabelHandlers();
@@ -2398,7 +2404,7 @@ export default class Rubix {
       throw new Error("Series exists: " + name);
     }
     if (this.stacked) {
-      let stacked_area_series = new Rubix.StackedAreaSeries(this, opts);
+      let stacked_area_series = this.StackedAreaSeries(this, opts);
       this.charts[stacked_area_series.name] = stacked_area_series;
       this.legend.append("<div class='"+this.masterId+"-legend-labels' data-name='"+stacked_area_series.name+"' data-type='astack' style='cursor: pointer; display: inline-block; font-weight: bold; margin-right: 10px; color: "+stacked_area_series.opts.color+"'><span style='font-size: 22px;'>■ </span><span style='font-size: 12px; position:relative; top: -3px; left: -2px;'>"+stacked_area_series.name+"</span></div>");
       this.resetLabelHandlers();
@@ -2496,35 +2502,35 @@ export default class Rubix {
   * Nested Class
   */
   StackedAreaSeries(rubix, opts) {
-    return new StackedAreaSeries(rubix, opts);
+    return new RubixStackedAreaSeries(rubix, opts);
   }
 
   /**
   * Nested Class
   */
   PieDonut(id, type, opts) {
-    return new PieDonut(id, type, opts);
+    return new RubixPieDonut(id, type, opts);
   }
 
   /**
   * Nested Class
   */
   LineSeries(rubix, opts) {
-    return new LineSeries(rubix, opts);
+    return new RubixLineSeries(rubix, opts);
   }
 
   /**
   * Nested Class
   */
   ColumnSeries(rubix, opts) {
-    return new ColumnSeries(rubix, opts);
+    return new RubixColumnSeries(rubix, opts);
   }
 
   /**
   * Nested Class
   */
   AreaSeries(rubix, opts) {
-    return new AreaSeries(rubix, opts);
+    return new RubixAreaSeries(rubix, opts);
   }
 };
 

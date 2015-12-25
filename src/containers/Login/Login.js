@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import DocumentMeta from 'react-document-meta';
 import * as authActions from 'redux/modules/auth';
 import config from '../../config';
-import Dashboard from '../../rubix/jsx/demo/routes/dashboard';
+import {Dashboard} from 'components';
 
 @connect(
   state => ({user: state.auth.user}),
