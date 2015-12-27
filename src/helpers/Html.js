@@ -53,6 +53,9 @@ export default class Html extends Component {
           <link media="screen" rel="stylesheet" type="text/css" href="/css/demo/blessed/ltr/font-faces.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/css/fonts/demo/fonts.css"/>
           <link media="screen" rel="stylesheet" type="text/css" href="/demo.css"/>
+
+          <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+          <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
         </head>
         <body>
           <div id="content" dangerouslySetInnerHTML={{__html: content}}/>
