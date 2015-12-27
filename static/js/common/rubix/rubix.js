@@ -1,4 +1,3 @@
-/*eslint-disable*/
 window.Rubix = window.Rubix || {};
 
 /*
@@ -5785,4 +5784,3 @@ Rubix.Cleanup = function() {
     }
     RubixListeners = [];
 };
-/*eslint-disable*/

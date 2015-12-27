@@ -2,7 +2,6 @@ import React from 'react';
 import {IndexRoute, Route} from 'react-router';
 import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
-    App,
     Chat,
     Home,
     Widgets,
@@ -12,6 +11,7 @@ import {
     LoginSuccess,
     Survey,
     NotFound,
+    Demo
   } from 'containers';
 
 export default (store) => {
@@ -36,7 +36,7 @@ export default (store) => {
    * Please keep routes in alphabetical order
    */
   return (
-    <Route path="/" component={App}>
+    <Route path="/" component={Demo}>
       { /* Home (main) route */ }
       <IndexRoute component={Home}/>
 

@@ -82,7 +82,7 @@
     }
   },
   "dependencies": {
-    "d3": "^3.5.12",
+    "d3": "3.5.12",
     "jquery": "^2.1.4",
     "classnames": "^2.1.2",
     "loopback": "2.26.0",

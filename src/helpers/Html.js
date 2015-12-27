@@ -67,6 +67,11 @@ export default class Html extends Component {
             <ol className='indicator'></ol>
           </div>
 
+          <script type='text/javascript' src='/bower_components/jquery/dist/jquery.js'></script>
+          <script type='text/javascript' src='/js/vendor/d3/d3.js'></script>
+          <script type='text/javascript' src='/js/common/rubix/rubix.js'></script>
+
+
           <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
           {/*Main script will effect rubix's UI*/}
           <script src={assets.javascript.main} charSet="UTF-8"/>
