@@ -72,7 +72,7 @@ export default class Html extends Component {
 
           <script type='text/javascript' src='/bower_components/jquery/dist/jquery.js'></script>
           <script type='text/javascript' src='/js/vendor/d3/d3.js'></script>
-          <script type='text/javascript' src='/js/common/rubix/rubix.js'></script>
+          <script type='text/javascript' src='/js/common/rubix/rubix.custom.js'></script>
 
 
           <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>

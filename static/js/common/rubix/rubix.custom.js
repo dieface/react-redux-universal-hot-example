@@ -4573,6 +4573,13 @@ Rubix.ColumnSeries.prototype.addData = function(data) {
     this._animate_draw();
 };
 
+Rubix.ColumnSeries.prototype.removeData = function(data) {
+  while(this.column_stack.length>0) {
+    var rawData = this.column_stack.shift();
+    this.removePoint(rawData.ref);
+  }
+};
+
 Rubix.ColumnSeries.prototype._createRect = function() {
     var self = this;
     var strokecolor = 'white';
