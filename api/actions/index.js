@@ -5,3 +5,4 @@ export logout from './logout';
 export * as widget from './widget/index';
 export * as product from './product/index';
 export loadGender from './gender';
+export updateGender from './fake';

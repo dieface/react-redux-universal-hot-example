@@ -12,7 +12,6 @@ const pretty = new PrettyError();
 const app = express();
 
 const server = new http.Server(app);
-
 const io = new SocketIo(server);
 io.path('/ws');
 
@@ -85,7 +84,7 @@ if (config.apiPort) {
       io.emit('msg', data);
     });
   });
-  io.listen(runnable);
+  export const socketio = io.listen(runnable);
 } else {
   console.error('==>     ERROR: No PORT environment variable has been specified');
 }

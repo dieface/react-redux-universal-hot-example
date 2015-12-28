@@ -15,11 +15,39 @@ function fetchDataDeferred(getState, dispatch) {
 
 @connectData(null, fetchDataDeferred)
 @connect(
-  state => ({data: state.dashboard.data}),
+  state => ({
+    data: state.dashboard.data
+  }),
   chartActions)
 export default class Dashboard extends Component {
   static propTypes = {
     data: PropTypes.object,
+    load: PropTypes.func.isRequired
+  }
+
+  componentDidMount() {
+    console.log("~~~ componentDidMount");
+    if (socket && !this.onMsgListener) {
+      console.log("~~~ !this.onMsgListener start");
+      this.onMsgListener = socket.on('msg', this.onMessageReceived);
+      console.log("~~~ !this.onMsgListener end");
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("~~~ componentWillUnmount");
+    if (socket && this.onMsgListener) {
+      console.log("~~~ this.onMsgListener start");
+      socket.removeListener('on', this.onMsgListener);
+      this.onMsgListener = null;
+      console.log("~~~ this.onMsgListener end");
+    }
+  }
+
+  onMessageReceived = (data) => {
+    console.log("~~~ onMessageReceived");
+    const { load } = this.props;
+    load();
   }
 
   getMainData() {
@@ -69,12 +97,20 @@ export default class Dashboard extends Component {
     const mainData = this.getMainData();
     const genderData = this.getGenderData();
     const { load } = this.props;
-    
+
     return (
       <div>
         <MainChart data={mainData}/>
         <MaleFemaleChart data={genderData}/>
-        <button onClick={load}>
+        <button onClick={() => {
+            console.log("``` click");
+
+            socket.emit('msg', {
+              from: "fakeFrom",
+              text: "fakeText"
+            });
+
+          }}>
           Reload Charts
         </button>
       </div>
