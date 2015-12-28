@@ -12,5 +12,6 @@ export MiniInfoBar from './MiniInfoBar/MiniInfoBar';
 export SurveyForm from './SurveyForm/SurveyForm';
 export WidgetForm from './WidgetForm/WidgetForm';
 export ProductForm from './ProductForm/ProductForm';
-export Dashboard from './Dashboard/Dashboard';
+export MainChart from './Dashboard/MainChart';
+export MaleFemaleChart from './Dashboard/MaleFemaleChart';
 export Map from './Map/Map';

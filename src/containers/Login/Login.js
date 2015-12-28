@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import DocumentMeta from 'react-document-meta';
 import * as authActions from 'redux/modules/auth';
 import config from '../../config';
-import {Dashboard} from 'components';
 
 @connect(
   state => ({user: state.auth.user}),
@@ -28,7 +27,6 @@ export default class Login extends Component {
     return (
       <div className={styles.loginPage + ' container'}>
         <DocumentMeta title={config.app.title + ': Login'}/>
-        <Dashboard />
         <h1>Login</h1>
         {!user &&
         <div>
