@@ -64,7 +64,7 @@ export default class MaleFemaleChart extends Component {
     });
 
     var femaleData = data["female"];
-    // column1.addData(femaleData);
+    column1.addData(femaleData);
 
     this.setState({
       male: column,
@@ -75,26 +75,14 @@ export default class MaleFemaleChart extends Component {
   update(data) {
     let { male, female } = this.state;
 
-    // male.data = data["male"];
-
     //Remove old points and data
     //extracted from ColumnSeries.prototype.show() & ColumnSeries.prototype.addData()
     male.removeData();
-    male.addData(data["male"]);
-    // while(male.column_stack.length>0) {
-    //   let rawData = male.column_stack.shift();
-    //   male.removePoint(rawData.ref);
-    // }
-    // if (male.column_stack.length) {
-    //   let rawData = male.column_stack.shift();
-      // if (rawData.type === 'addPoint') {
-      //   male.addPoint(rawData.data, rawData.shift, true);
-      // } else {
-        // male.removePoint(rawData.ref);
-      // }
-    // }
-
+    female.removeData();
     //Add new data and points
+    male.addData(data["male"]);
+    female.addData(data["female"]);
+
     // male.addData(data["male"]);
 
     //Clear and redraw rects
@@ -113,46 +101,6 @@ export default class MaleFemaleChart extends Component {
     // male._createRect();
     //
     // p.exit().remove();
-
-    // male.rubix.resetFocus();
-
-
-    // male.update([]);
-    // female.update([]);
-
-    // male.update(data["male"]);
-    // male.rubix.resetFocus();
-    // male.draw(true);
-    // male.setupFocus();
-
-    // male.rubix.resetFocus(true);
-    // male.rubix.resetFocus();
-    // male.rubix.resetAxis();
-    // male.rubix.forceRedraw();
-    // male._animate_draw();
-
-    // female.update(data["female"]);
-    //
-    // male.rubix.resetAxis();
-    // male.rubix.forceRedraw();
-    //
-    // female.rubix.resetAxis();
-    // female.rubix.forceRedraw();
-    // this.rubix.resetAxis();
-    // this.rubix.forceRedraw();
-    // this._animate_draw();
-
-    // male.redraw();
-    // female.redraw()
-
-    // male._animate_draw();
-    // female._animate_draw()
-
-    // male.forceRedraw();
-    // female.forceRedraw()
-
-    // male.addData(data["male"]);
-    // female.addData(data["female"]);
   }
 
   componentDidMount() {
