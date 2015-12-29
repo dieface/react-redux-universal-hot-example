@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { MainChart, MaleFemaleChart, Pie, Donut } from 'components';
+import { MainChart, MaleFemaleChart, Pie, Donut, Line, Table, DataTable } from 'components';
 
 import {connect} from 'react-redux';
 import {isLoaded, load as loadCharts} from 'redux/modules/dashboard';
@@ -148,18 +148,65 @@ export default class Dashboard extends Component {
     ];
   }
 
+  getLineData() {
+    const data = [
+      {x: 1, y: 11},
+      {x: 2, y: 14},
+      {x: 3, y: 25},
+      {x: 4, y: 24},
+      {x: 5, y: 16},
+      {x: 6, y: 23},
+      {x: 7, y: 21},
+      {x: 8, y: 27},
+      {x: 9, y: 14},
+      {x: 10, y: 20},
+    ];
+
+    const data2 = [
+      {x: 1, y: 3},
+      {x: 2, y: 4},
+      {x: 3, y: 7},
+      {x: 4, y: 2},
+      {x: 5, y: 6},
+      {x: 6, y: 4},
+      {x: 7, y: 5},
+      {x: 8, y: 2},
+      {x: 9, y: 6},
+      {x: 10, y: 2},
+    ];
+
+    const data3 = [
+      {x: 1, y: 1},
+      {x: 2, y: 4},
+      {x: 3, y: 2},
+      {x: 4, y: 1},
+      {x: 5, y: 6},
+      {x: 6, y: 7},
+      {x: 7, y: 8},
+      {x: 8, y: 5},
+      {x: 9, y: 4},
+      {x: 10, y: 7},
+    ];
+
+    return [data, data2, data3];
+  }
+
   render() {
     const mainData = this.getMainData();
     const genderData = this.getGenderData();
     const pieData = this.getPieData();
     const donutData = this.getDonutData();
+    const lineData = this.getLineData();
 
     return (
       <div>
+        <DataTable/>
+        <Table/>
         <MainChart data={mainData}/>
         <MaleFemaleChart data={genderData}/>
         <Pie data={pieData}/>
         <Donut data={donutData}/>
+        <Line data={lineData}/>
         <button onClick={() => {
           socket.emit('msg', {
             from: 'fakeFrom',
