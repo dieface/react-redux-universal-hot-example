@@ -14,4 +14,6 @@ export WidgetForm from './WidgetForm/WidgetForm';
 export ProductForm from './ProductForm/ProductForm';
 export MainChart from './Dashboard/MainChart';
 export MaleFemaleChart from './Dashboard/MaleFemaleChart';
+export Pie from './Dashboard/Pie';
+export Donut from './Dashboard/Donut';
 export Map from './Map/Map';

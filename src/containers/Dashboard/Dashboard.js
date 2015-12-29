@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import { MainChart, MaleFemaleChart } from 'components';
+import { MainChart, MaleFemaleChart, Pie, Donut } from 'components';
 
 import {connect} from 'react-redux';
 import {isLoaded, load as loadCharts} from 'redux/modules/dashboard';
 import * as chartActions from 'redux/modules/dashboard';
 import connectData from 'helpers/connectData';
-
 
 function fetchDataDeferred(getState, dispatch) {
   if (!isLoaded(getState())) {
@@ -77,34 +76,90 @@ export default class Dashboard extends Component {
     const {data} = this.props;
     // console.info('gender: ', data.gender);
     return data.gender;
-    // return {
-    //   male: [
-    //     {x: 2005, y: 21},
-    //     {x: 2006, y: 44},
-    //     {x: 2007, y: 14},
-    //     {x: 2008, y: 18},
-    //     {x: 2009, y: 23},
-    //     {x: 2010, y: 21}
-    //   ],
-    //   female: [
-    //     {x: 2005, y: -10},
-    //     {x: 2006, y: -56},
-    //     {x: 2007, y: -86},
-    //     {x: 2008, y: -82},
-    //     {x: 2009, y: -77},
-    //     {x: 2010, y: -79}
-    //   ]
-    // };
+  }
+
+  getPieData() {
+    return [
+      {
+        name: 'Firefox',
+        value: 45.0,
+        color: '#4572a7'
+      },
+      {
+        name: 'IE',
+        value: 26.8,
+        color: '#aa4643'
+      },
+      {
+        name: 'Chrome',
+        value: 12.8,
+        color: '#89a54e'
+      },
+      {
+        name: 'Safari',
+        value: 8.5,
+        color: '#80699b'
+      },
+      {
+        name: 'Opera',
+        value: 6.2,
+        color: '#3d96ae'
+      },
+      {
+        name: 'Others',
+        value: 0.7,
+        color: '#db843d'
+      }
+    ];
+  }
+
+  getDonutData() {
+    return [
+      {
+        name: 'Firefox',
+        value: 45.0,
+        color: '#4572a7'
+      },
+      {
+        name: 'IE',
+        value: 26.8,
+        color: '#aa4643'
+      },
+      {
+        name: 'Chrome',
+        value: 12.8,
+        color: '#89a54e'
+      },
+      {
+        name: 'Safari',
+        value: 8.5,
+        color: '#80699b'
+      },
+      {
+        name: 'Opera',
+        value: 6.2,
+        color: '#3d96ae'
+      },
+      {
+        name: 'Others',
+        value: 0.7,
+        color: '#db843d'
+      }
+    ];
   }
 
   render() {
     const mainData = this.getMainData();
     const genderData = this.getGenderData();
+    const pieData = this.getPieData();
+    const donutData = this.getDonutData();
 
     return (
       <div>
         <MainChart data={mainData}/>
         <MaleFemaleChart data={genderData}/>
+        <Pie data={pieData}/>
+        <Donut data={donutData}/>
         <button onClick={() => {
           socket.emit('msg', {
             from: 'fakeFrom',
