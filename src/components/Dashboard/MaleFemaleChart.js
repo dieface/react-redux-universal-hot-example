@@ -48,40 +48,36 @@ export default class MaleFemaleChart extends Component {
 
     var chart = new Rubix('#male-female-chart', layout);
 
-    var column = chart.column_series({
+    var columnMale = chart.column_series({
       name: 'male',
       color: '#2D89EF',
       marker: 'cross'
     });
 
     var maleData = data["male"];
-    column.addData(maleData);
+    columnMale.addData(maleData);
 
-    var column1 = chart.column_series({
+    var columnFemale = chart.column_series({
       name: 'female',
       color: '#FF0097',
       marker: 'diamond'
     });
 
     var femaleData = data["female"];
-    column1.addData(femaleData);
+    columnFemale.addData(femaleData);
 
-    this.setState({
-      male: column,
-      female: column1
-    });
+    this.colMale = columnMale;
+    this.colFemale = columnFemale;
   }
 
   update(data) {
-    let { male, female } = this.state;
-
     //Remove old points and data
     //extracted from ColumnSeries.prototype.show() & ColumnSeries.prototype.addData()
-    male.removeData();
-    female.removeData();
+    this.colMale.removeData();
+    this.colFemale.removeData();
     //Add new data and points
-    male.addData(data["male"]);
-    female.addData(data["female"]);
+    this.colMale.addData(data["male"]);
+    this.colFemale.addData(data["female"]);
 
     // male.addData(data["male"]);
 

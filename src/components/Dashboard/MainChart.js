@@ -5,10 +5,16 @@ import React, {Component, PropTypes} from 'react';
 
 export default class MainChart extends Component {
   static propTypes = {
-    data: PropTypes.object
+    data: PropTypes.array
   }
 
-  componentDidMount() {
+  state = {
+    total: null
+  }
+
+  init(data) {
+    console.log("[MainChart] init");
+
     // const Rubix = require('helpers/rubix/rubix');
     // const d3 = require('d3');
 
@@ -61,9 +67,35 @@ export default class MainChart extends Component {
 
     chart.extent = [1297110663*850+(86400000*20*(.35*40)), 1297110663*850+(86400000*20*(.66*40))];
 
-    const {data} = this.props;
     total_users.addData(data);
+
+    this.areaUser = total_users;
   }
+
+  update(data) {
+    console.log("[MainChart] update");
+
+    //Remove old points and data
+    //extracted from show() & addData()
+    this.areaUser.removeData();
+
+    //Add new data and points
+    this.areaUser.addData(data);
+  }
+
+  componentDidMount() {
+    console.log("[MainChart] didMount");
+
+    const {data} = this.props;
+    this.init(data);
+  }
+
+  componentDidUpdate() {
+    console.log("[MainChart] didUpdate");
+    const {data} = this.props;
+    this.update(data);
+  }
+
   render() {
     return (
       <div id='main-chart'></div>

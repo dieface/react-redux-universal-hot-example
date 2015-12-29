@@ -5449,6 +5449,10 @@ Rubix.AreaSeries.prototype.addData = function(data) {
     this._animate_draw();
 };
 
+Rubix.AreaSeries.prototype.removeData = function() {
+  this.data[this.name] = [];
+};
+
 Rubix.AreaSeries.prototype.draw = function(forced) {
     if(!this.name) return;
     if(!this.data) return;

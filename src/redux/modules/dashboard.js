@@ -14,11 +14,12 @@ export default function reducer(state = initialState, action = {}) {
         loading: true
       };
     case LOAD_SUCCESS:
+      const fetched = action.result;
       return {
         ...state,
         loading: false,
         loaded: true,
-        data: action.result,
+        data: fetched,
         error: null
       };
     case LOAD_FAIL:
