@@ -3,8 +3,8 @@ import { socketio } from '../api.js';
 
 export default function fake() {
   var io = socketio;//require('socket.io')();
-  console.log("===== io");
-  console.log(io);
+  // console.log("===== io");
+  // console.log(io);
   // io.sockets.emit('msg', {
   //   from: "fakeFrom",
   //   text: "fakeText"
