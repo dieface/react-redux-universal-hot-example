@@ -78,7 +78,8 @@ export default class Html extends Component {
           <script type='text/javascript' src='/js/vendor/tablesaw/tablesaw.js'></script>
           <script type='text/javascript' src='/js/vendor/datatables/datatables.js'></script>
 
-
+          <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
+          <script type='text/javascript' src='/js/vendor/gmaps/gmaps.js'></script>
 
           <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
           {/*Main script will effect rubix's UI*/}

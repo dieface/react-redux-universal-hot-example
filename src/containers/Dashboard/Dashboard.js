@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { MainChart, MaleFemaleChart, Pie, Donut, Line, Table, DataTable } from 'components';
+import { MainChart, MaleFemaleChart, Pie, Donut, Line, DataTable, GMap } from 'components';
 
 import {connect} from 'react-redux';
 import {isLoaded, load as loadCharts} from 'redux/modules/dashboard';
@@ -201,12 +201,12 @@ export default class Dashboard extends Component {
     return (
       <div>
         <DataTable/>
-        <Table/>
         <MainChart data={mainData}/>
         <MaleFemaleChart data={genderData}/>
         <Pie data={pieData}/>
         <Donut data={donutData}/>
         <Line data={lineData}/>
+        <GMap/>
         <button onClick={() => {
           socket.emit('msg', {
             from: 'fakeFrom',

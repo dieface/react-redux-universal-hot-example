@@ -19,5 +19,6 @@ export MaleFemaleChart from './Dashboard/MaleFemaleChart';
 export Pie from './Dashboard/Pie';
 export Donut from './Dashboard/Donut';
 export Line from './Dashboard/Line';
-export Table from './Dashboard/Table';
+export TableSaw from './Dashboard/TableSaw';
 export DataTable from './Dashboard/DataTable';
+export GMap from './Map/GMap';
