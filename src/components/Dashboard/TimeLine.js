@@ -20,45 +20,49 @@ export default class TimeLine extends Component {
   }
 
   render() {
+    const data = [
+      {
+        createdAt: moment().format('YYYY-MM-DD'),
+        messages: [
+          "girl!!"
+        ]
+      },
+      {
+        createdAt: moment().format('YYYY-MM-DD'),
+        messages: [
+          "oh ya man!",
+          "cool boy"
+        ]
+      }
+    ];
+
     return (
       <div>
-        <TimelineView className='border-hoverblue tl-blue'>
-          <TimelineItem>
-            <TimelineHeader>
-              <TimelineIcon className='bg-blue fg-white' glyph='icon-fontello-chat-1' />
-              <TimelineTitle>
-                Tue Jul 29 2014
-              </TimelineTitle>
-            </TimelineHeader>
-            <TimelineBody>
-              <ul>
-                <li>
-                  helllo girl!!
-                </li>
-              </ul>
-            </TimelineBody>
-          </TimelineItem>
-        </TimelineView>
-        <TimelineView className='border-hoverblue tl-blue'>
-          <TimelineItem>
-            <TimelineHeader>
-              <TimelineIcon className='bg-blue fg-white' glyph='icon-fontello-chat-1' />
-              <TimelineTitle>
-                Tue Jul 28 2014
-              </TimelineTitle>
-            </TimelineHeader>
-            <TimelineBody>
-              <ul>
-                <li>
-                  <span>oh ya man!</span>
-                </li>
-                <li>
-                  <span>cool boy</span>
-                </li>
-              </ul>
-            </TimelineBody>
-          </TimelineItem>
-        </TimelineView>
+        {data && data.map((d) => {
+          return (
+            <TimelineView key={d.createdAt} className='border-hoverblue tl-blue'>
+              <TimelineItem>
+                <TimelineHeader>
+                  <TimelineIcon className='bg-blue fg-white' glyph='icon-fontello-chat-1' />
+                  <TimelineTitle>
+                    {d.createdAt}
+                  </TimelineTitle>
+                </TimelineHeader>
+                <TimelineBody>
+                  <ul>
+                    {d.messages.map((m) => {
+                      return (
+                        <li key={m}>
+                          <span>{m}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </TimelineBody>
+              </TimelineItem>
+            </TimelineView>
+          );
+        })}
       </div>
     );
   }

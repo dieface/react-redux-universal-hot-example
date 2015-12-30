@@ -6,8 +6,8 @@ export class TimelineView extends Component {
   static propTypes = {
     centered: PropTypes.bool,
     withHeader: PropTypes.bool,
-    className: PropTypes.object,
-    children: PropTypes.array
+    className: PropTypes.string,
+    children: PropTypes.object
   }
 
   render() {
@@ -35,8 +35,8 @@ export class TimelineView extends Component {
 
 export class TimelineItem extends Component {
   static propTypes = {
-    className: PropTypes.object,
-    children: PropTypes.array
+    className: PropTypes.string,
+    children: PropTypes.object
   }
 
   render() {
@@ -55,8 +55,8 @@ export class TimelineItem extends Component {
 
 export class TimelineHeader extends Component {
   static propTypes = {
-    className: PropTypes.object,
-    children: PropTypes.array
+    className: PropTypes.string,
+    children: PropTypes.object
   }
 
   render() {
@@ -75,8 +75,8 @@ export class TimelineHeader extends Component {
 
 export class TimelineIcon extends Component {
   static propTypes = {
-    className: PropTypes.object,
-    children: PropTypes.array
+    className: PropTypes.string,
+    children: PropTypes.object
   }
 
   render() {
@@ -93,8 +93,8 @@ export class TimelineIcon extends Component {
 
 export class TimelineAvatar extends Component {
   static propTypes = {
-    className: PropTypes.object,
-    children: PropTypes.array
+    className: PropTypes.string,
+    children: PropTypes.object
   }
 
   render() {
@@ -121,8 +121,8 @@ export class TimelineAvatar extends Component {
 
 export class TimelineTitle extends Component {
   static propTypes = {
-    className: PropTypes.object,
-    children: PropTypes.array
+    className: PropTypes.string,
+    children: PropTypes.object
   }
 
   render() {
@@ -141,8 +141,8 @@ export class TimelineTitle extends Component {
 
 export class TimelineBody extends Component {
   static propTypes = {
-    className: PropTypes.object,
-    children: PropTypes.array
+    className: PropTypes.string,
+    children: PropTypes.object
   }
 
   render() {

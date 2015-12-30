@@ -104,12 +104,12 @@ export default class Dashboard extends Component {
       <div>
         <DataTable/>
         <TimeLine/>
+        <GMap/>
         <MainChart data={mainData}/>
         <MaleFemaleChart data={genderData}/>
         <Pie data={pieData}/>
         <Donut data={donutData}/>
         <Line data={lineData}/>
-        <GMap/>
         <button onClick={() => {
           socket.emit('msg', {
             from: 'fakeFrom',

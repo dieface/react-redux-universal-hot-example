@@ -82,6 +82,7 @@
     }
   },
   "dependencies": {
+    "moment": "2.10.6",
     "d3": "3.5.12",
     "jquery": "^2.1.4",
     "classnames": "^2.1.2",
