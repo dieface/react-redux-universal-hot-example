@@ -11,26 +11,29 @@ export default class Pie extends Component {
     });
 
     donut.addData(data);
+    this.donut = donut;
+  }
 
-    var browsers = ['Firefox', 'IE', 'Chrome', 'Safari', 'Opera', 'Others'], name;
+  update(data) {
+    console.info("[Donut] update with data: ", data);
 
-    var redrawDonut = () => {
-      name = browsers.shift();
-      browsers.push(name);
-      return {
-        name: name,
-        value: Math.random() * 100
-      };
-    };
-
-    this.interval = setInterval(() => {
-      donut.updatePoint(redrawDonut());
-    }, 1000);
+    for (var i = 0; i < data.length; i++) {
+      this.donut.updatePoint(data[i]);
+    }
   }
 
   componentDidMount() {
     const {data} = this.props;
     this.init(data);
+  }
+
+  componentDidUpdate() {
+    console.info("[Donut] didUpdate");
+
+    const {data} = this.props;
+    console.log(data);
+
+    this.update(data);
   }
 
   render() {

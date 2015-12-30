@@ -11,11 +11,23 @@ export default class Pie extends Component {
     });
 
     pie.addData(data);
+    this.pie = pie;
+  }
+
+  update(data) {
+    for (var i = 0; i < data.length; i++) {
+      this.pie.updatePoint(data[i]);
+    }
   }
 
   componentDidMount() {
     const {data} = this.props;
     this.init(data);
+  }
+
+  componentDidUpdate() {
+    const {data} = this.props;
+    this.update(data);
   }
 
   render() {

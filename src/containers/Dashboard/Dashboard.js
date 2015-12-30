@@ -79,116 +79,18 @@ export default class Dashboard extends Component {
   }
 
   getPieData() {
-    return [
-      {
-        name: 'Firefox',
-        value: 45.0,
-        color: '#4572a7'
-      },
-      {
-        name: 'IE',
-        value: 26.8,
-        color: '#aa4643'
-      },
-      {
-        name: 'Chrome',
-        value: 12.8,
-        color: '#89a54e'
-      },
-      {
-        name: 'Safari',
-        value: 8.5,
-        color: '#80699b'
-      },
-      {
-        name: 'Opera',
-        value: 6.2,
-        color: '#3d96ae'
-      },
-      {
-        name: 'Others',
-        value: 0.7,
-        color: '#db843d'
-      }
-    ];
+    const {data} = this.props;
+    return data.pie;
   }
 
   getDonutData() {
-    return [
-      {
-        name: 'Firefox',
-        value: 45.0,
-        color: '#4572a7'
-      },
-      {
-        name: 'IE',
-        value: 26.8,
-        color: '#aa4643'
-      },
-      {
-        name: 'Chrome',
-        value: 12.8,
-        color: '#89a54e'
-      },
-      {
-        name: 'Safari',
-        value: 8.5,
-        color: '#80699b'
-      },
-      {
-        name: 'Opera',
-        value: 6.2,
-        color: '#3d96ae'
-      },
-      {
-        name: 'Others',
-        value: 0.7,
-        color: '#db843d'
-      }
-    ];
+    const {data} = this.props;
+    return data.donut;
   }
 
   getLineData() {
-    const data = [
-      {x: 1, y: 11},
-      {x: 2, y: 14},
-      {x: 3, y: 25},
-      {x: 4, y: 24},
-      {x: 5, y: 16},
-      {x: 6, y: 23},
-      {x: 7, y: 21},
-      {x: 8, y: 27},
-      {x: 9, y: 14},
-      {x: 10, y: 20},
-    ];
-
-    const data2 = [
-      {x: 1, y: 3},
-      {x: 2, y: 4},
-      {x: 3, y: 7},
-      {x: 4, y: 2},
-      {x: 5, y: 6},
-      {x: 6, y: 4},
-      {x: 7, y: 5},
-      {x: 8, y: 2},
-      {x: 9, y: 6},
-      {x: 10, y: 2},
-    ];
-
-    const data3 = [
-      {x: 1, y: 1},
-      {x: 2, y: 4},
-      {x: 3, y: 2},
-      {x: 4, y: 1},
-      {x: 5, y: 6},
-      {x: 6, y: 7},
-      {x: 7, y: 8},
-      {x: 8, y: 5},
-      {x: 9, y: 4},
-      {x: 10, y: 7},
-    ];
-
-    return [data, data2, data3];
+    const {data} = this.props;
+    return data.line;
   }
 
   render() {

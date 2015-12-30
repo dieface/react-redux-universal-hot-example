@@ -71,13 +71,23 @@ export default class MaleFemaleChart extends Component {
   }
 
   update(data) {
-    //Remove old points and data
-    //extracted from ColumnSeries.prototype.show() & ColumnSeries.prototype.addData()
-    this.colMale.removeData();
-    this.colFemale.removeData();
-    //Add new data and points
-    this.colMale.addData(data["male"]);
-    this.colFemale.addData(data["female"]);
+    var dataMale = data["male"];
+    for (var i = 0; i < dataMale.length; i++) {
+      this.colMale.updatePoint(dataMale[i]);
+    }
+
+    var dataFemale = data["female"];
+    for (var i = 0; i < dataFemale.length; i++) {
+      this.colFemale.updatePoint(dataFemale[i]);
+    }
+
+    // //Remove old points and data
+    // //extracted from ColumnSeries.prototype.show() & ColumnSeries.prototype.addData()
+    // this.colMale.removeData();
+    // this.colFemale.removeData();
+    // //Add new data and points
+    // this.colMale.addData(data["male"]);
+    // this.colFemale.addData(data["female"]);
 
     // male.addData(data["male"]);
 

@@ -75,12 +75,16 @@ export default class MainChart extends Component {
   update(data) {
     console.log("[MainChart] update");
 
-    //Remove old points and data
-    //extracted from show() & addData()
-    this.areaUser.removeData();
+    for (var i = 0; i < data.length; i++) {
+      this.areaUser.updatePoint(data[i]);
+    }
 
-    //Add new data and points
-    this.areaUser.addData(data);
+    // //Remove old points and data
+    // //extracted from show() & addData()
+    // this.areaUser.removeData();
+    //
+    // //Add new data and points
+    // this.areaUser.addData(data);
   }
 
   componentDidMount() {

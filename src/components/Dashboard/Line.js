@@ -42,11 +42,28 @@ export default class Line extends Component {
     });
 
     area2.addData(data[2]);
+
+    this.lines = [line, area, area2];
+  }
+
+  update(data) {
+    for (var i = 0; i < data.length; i++) {
+      for (var j = 0; j < data[i].length; j++) {
+        this.lines[i].updatePoint(data[i][j]);
+      }
+    }
   }
 
   componentDidMount() {
     const {data} = this.props;
+    console.log("[Line] mounted data: ", data);
     this.init(data);
+  }
+
+  componentDidUpdate() {
+    const {data} = this.props;
+    console.log("[Line] updated data: ", data);
+    this.update(data);
   }
 
   render() {

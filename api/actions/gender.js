@@ -25,6 +25,113 @@ function getMainData() {
   /*eslint-disable*/
 }
 
+function getPieData() {
+  var firefox = rnd();
+  var ie = rnd();
+  var chrome = 100 - firefox - ie;
+
+  return [
+    {
+      name: 'Firefox',
+      value: firefox,
+      color: '#4572a7'
+    },
+    {
+      name: 'IE',
+      value: ie,
+      color: '#aa4643'
+    },
+    {
+      name: 'Chrome',
+      value: chrome,
+      color: '#89a54e'
+    }
+  ];
+}
+
+function getDonutData() {
+  const browsers = [
+    {
+      name: 'Firefox',
+      color: '#4572a7'
+    },
+    {
+      name: 'IE',
+      color: '#aa4643'
+    },
+    {
+      name: 'Chrome',
+      color: '#89a54e'
+    },
+    {
+      name: 'Safari',
+      color: '#80699b'
+    },
+    {
+      name: 'Opera',
+      color: '#3d96ae'
+    },
+    {
+      name: 'Others',
+      color: '#db843d'
+    }
+  ];
+
+  const b = browsers[Math.floor(Math.random() * browsers.length)];
+
+  const data = [{
+    name: b.name,
+    value: Math.random() * 100,
+    color: b.color
+  }];
+  console.log("donut data: ", data);
+
+  return data;
+}
+
+function getLineData() {
+  const data = [
+    {x: 1, y: rnd()},
+    {x: 2, y: rnd()},
+    {x: 3, y: rnd()},
+    {x: 4, y: rnd()},
+    {x: 5, y: rnd()},
+    {x: 6, y: rnd()},
+    {x: 7, y: rnd()},
+    {x: 8, y: rnd()},
+    {x: 9, y: rnd()},
+    {x: 10, y: rnd()},
+  ];
+
+  const data2 = [
+    {x: 1, y: rnd()},
+    {x: 2, y: rnd()},
+    {x: 3, y: rnd()},
+    {x: 4, y: rnd()},
+    {x: 5, y: rnd()},
+    {x: 6, y: rnd()},
+    {x: 7, y: rnd()},
+    {x: 8, y: rnd()},
+    {x: 9, y: rnd()},
+    {x: 10, y: rnd()},
+  ];
+
+  const data3 = [
+    {x: 1, y: rnd()},
+    {x: 2, y: rnd()},
+    {x: 3, y: rnd()},
+    {x: 4, y: rnd()},
+    {x: 5, y: rnd()},
+    {x: 6, y: rnd()},
+    {x: 7, y: rnd()},
+    {x: 8, y: rnd()},
+    {x: 9, y: rnd()},
+    {x: 10, y: rnd()},
+  ];
+
+  return [data, data2, data3];
+}
+
 export default function gender() {
   return new Promise((resolve) => {
     resolve({
@@ -46,7 +153,10 @@ export default function gender() {
           {x: 2010, y: rnd() * (-1)}
         ]
       },
-      user: getMainData()
+      user: getMainData(),
+      pie: getPieData(),
+      donut: getDonutData(),
+      line: getLineData()
     });
   });
 }
