@@ -11,30 +11,32 @@ export default class TimeLine extends Component {
   }
 
   componentDidMount() {
-    const {data} = this.props;
-    this.init(data);
   }
 
   componentDidUpdate() {
-    this.update(data);
   }
 
   render() {
-    const data = [
-      {
-        createdAt: moment().format('YYYY-MM-DD'),
-        messages: [
-          "girl!!"
-        ]
-      },
-      {
-        createdAt: moment().format('YYYY-MM-DD'),
-        messages: [
-          "oh ya man!",
-          "cool boy"
-        ]
-      }
-    ];
+    console.log("[Timeline] render");
+    const {data} = this.props;
+    console.log("[Timeline] data: ", data);
+
+    // const data = [
+    //   {
+    //     // createdAt: (new Date).toString(),
+    //     createdAt: chance.date().toString(),
+    //     messages: [
+    //       "girl!!"
+    //     ]
+    //   },
+    //   {
+    //     createdAt: chance.date().toString(),
+    //     messages: [
+    //       "oh ya man!",
+    //       "cool boy"
+    //     ]
+    //   }
+    // ];
 
     return (
       <div>

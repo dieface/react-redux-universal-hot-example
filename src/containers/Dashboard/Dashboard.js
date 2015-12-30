@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { MainChart, MaleFemaleChart, Pie, Donut, Line, DataTable, GMap, TimeLine } from 'components';
+import { MainChart, MaleFemaleChart, Pie, Donut, Line, DataTable, GMap, Timeline } from 'components';
 
 import {connect} from 'react-redux';
 import {isLoaded, load as loadCharts} from 'redux/modules/dashboard';
@@ -93,17 +93,23 @@ export default class Dashboard extends Component {
     return data.line;
   }
 
+  getTimelineData() {
+    const {data} = this.props;
+    return data.timeline;
+  }
+
   render() {
     const mainData = this.getMainData();
     const genderData = this.getGenderData();
     const pieData = this.getPieData();
     const donutData = this.getDonutData();
     const lineData = this.getLineData();
+    const timelineData = this.getTimelineData();
 
     return (
       <div>
         <DataTable/>
-        <TimeLine/>
+        <Timeline data={timelineData}/>
         <GMap/>
         <MainChart data={mainData}/>
         <MaleFemaleChart data={genderData}/>

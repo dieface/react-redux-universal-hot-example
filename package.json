@@ -82,6 +82,8 @@
     }
   },
   "dependencies": {
+    "chance": "0.8.0",
+    "lodash": "3.10.1",
     "moment": "2.10.6",
     "d3": "3.5.12",
     "jquery": "^2.1.4",

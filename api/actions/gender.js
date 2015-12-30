@@ -132,6 +132,39 @@ function getLineData() {
   return [data, data2, data3];
 }
 
+export function getTimelineData() {
+  const moment = require('moment');
+  const chance = require('chance').Chance();
+  const count = chance.integer({min: 1, max: 5});
+
+  // console.log('timeline count: ', count);
+  // console.log('timeline date: ', chance.date());
+
+  const data = [];
+
+  for (let i = 0; i < count; i++) {
+    const item = {
+      createdAt: moment(chance.date()).format('YYYY-MM-DD'),
+      messages: (() => {
+        const msgCount = chance.integer({min: 1, max: 3});
+        const msgs = [];
+        for (let j = 0; j < msgCount; j++) {
+          msgs.push(chance.paragraph());
+        }
+        // console.log('timeline msgs: ', msgs);
+        return msgs;
+      })()
+    };
+
+    // console.log('timeline item: ', item);
+    data.push(item);
+    // console.log('timeline data: ', data);
+  }
+
+  // console.log('timeline data: ', data);
+  return data;
+}
+
 export default function gender() {
   return new Promise((resolve) => {
     resolve({
@@ -156,7 +189,8 @@ export default function gender() {
       user: getMainData(),
       pie: getPieData(),
       donut: getDonutData(),
-      line: getLineData()
+      line: getLineData(),
+      timeline: getTimelineData()
     });
   });
 }
