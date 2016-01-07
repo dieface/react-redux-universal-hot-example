@@ -1,3 +1,6 @@
+const moment = require('moment');
+const chance = require('chance').Chance();
+
 function rnd() {
   return Math.round(Math.random() * 30) + 1;
 }
@@ -132,9 +135,7 @@ function getLineData() {
   return [data, data2, data3];
 }
 
-export function getTimelineData() {
-  const moment = require('moment');
-  const chance = require('chance').Chance();
+function getTimelineData() {
   const count = chance.integer({min: 1, max: 5});
 
   // console.log('timeline count: ', count);
@@ -165,6 +166,39 @@ export function getTimelineData() {
   return data;
 }
 
+function getTableData() {
+  const count = chance.integer({min: 100, max: 200});
+
+  const data = {},
+  columns = [
+    "Name",
+    "Gender",
+    "Office",
+    "Age",
+    "Start Date",
+    "Salary"
+  ],
+  rows = [];
+
+  for (let i = 0; i < count; i++) {
+    const item = {
+      name: chance.name(),
+      gender: chance.gender(),
+      office: chance.city(),
+      age: chance.age(),
+      startAt: moment(chance.date()).format('YYYY-MM-DD'),
+      salary: chance.dollar()
+    };
+
+    rows.push(item);
+  }
+
+  data["columns"] = columns;
+  data["rows"] = rows;
+
+  return data;
+}
+
 export default function gender() {
   return new Promise((resolve) => {
     resolve({
@@ -190,7 +224,8 @@ export default function gender() {
       pie: getPieData(),
       donut: getDonutData(),
       line: getLineData(),
-      timeline: getTimelineData()
+      timeline: getTimelineData(),
+      table: getTableData()
     });
   });
 }

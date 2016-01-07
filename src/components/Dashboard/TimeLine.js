@@ -17,9 +17,9 @@ export default class TimeLine extends Component {
   }
 
   render() {
-    console.log("[Timeline] render");
+    // console.log("[Timeline] render");
     const {data} = this.props;
-    console.log("[Timeline] data: ", data);
+    // console.log("[Timeline] data: ", data);
 
     // const data = [
     //   {

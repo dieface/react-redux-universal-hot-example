@@ -98,6 +98,11 @@ export default class Dashboard extends Component {
     return data.timeline;
   }
 
+  getTableData() {
+    const {data} = this.props;
+    return data.table;
+  }
+
   render() {
     const mainData = this.getMainData();
     const genderData = this.getGenderData();
@@ -105,12 +110,13 @@ export default class Dashboard extends Component {
     const donutData = this.getDonutData();
     const lineData = this.getLineData();
     const timelineData = this.getTimelineData();
+    const tableData = this.getTableData();
 
     return (
       <div>
-        <DataTable/>
-        <Timeline data={timelineData}/>
+        <DataTable data={tableData}/>
         <GMap/>
+        <Timeline data={timelineData}/>
         <MainChart data={mainData}/>
         <MaleFemaleChart data={genderData}/>
         <Pie data={pieData}/>
