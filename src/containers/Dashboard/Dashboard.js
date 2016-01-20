@@ -1,10 +1,23 @@
 import React, { Component, PropTypes } from 'react';
-import { MainChart, MaleFemaleChart, Pie, Donut, Line, DataTable, GMap, Timeline } from 'components';
+import { BootstrapTable, MainChart, MaleFemaleChart, Pie, Donut, Line, DataTable, GMap, Timeline } from 'components';
 
 import {connect} from 'react-redux';
 import {isLoaded, load as loadCharts} from 'redux/modules/dashboard';
 import * as chartActions from 'redux/modules/dashboard';
 import connectData from 'helpers/connectData';
+
+/* Table */
+const Griddle = require('griddle-react');
+import { Table, Cell, Column } from 'fixed-data-table';
+
+// Table data as a list of array.
+const rows = [
+  ['a1', 'b1', 'c1'],
+  ['a2', 'b2', 'c2'],
+  ['a3', 'b3', 'c3'],
+  // .... and more
+];
+
 
 function fetchDataDeferred(getState, dispatch) {
   if (!isLoaded(getState())) {
@@ -103,6 +116,11 @@ export default class Dashboard extends Component {
     return data.table;
   }
 
+  getGriddleData() {
+    const {data} = this.props;
+    return data.griddle;
+  }
+
   render() {
     const mainData = this.getMainData();
     const genderData = this.getGenderData();
@@ -111,10 +129,75 @@ export default class Dashboard extends Component {
     const lineData = this.getLineData();
     const timelineData = this.getTimelineData();
     const tableData = this.getTableData();
-
+    const fakeData = this.getGriddleData();
+    // const fakeData = [
+    //   {
+    //     "id": 0,
+    //     "name": "Mayer Leonard",
+    //     "city": "Kapowsin",
+    //     "state": "Hawaii",
+    //     "country": "United Kingdom",
+    //     "company": "Ovolo",
+    //     "favoriteNumber": 7
+    //   },
+    //   {
+    //     "id": 1,
+    //     "name": "Koch Becker",
+    //     "city": "Johnsonburg",
+    //     "state": "New Jersey",
+    //     "country": "Madagascar",
+    //     "company": "Eventage",
+    //     "favoriteNumber": 2
+    //   }
+    // ];
+    //
+    // const exampleMetadata = [
+    //   {
+    //     "columnName": "name",
+    //     "order": 9,
+    //     "locked": false,
+    //     "visible": true,
+    //     "displayName": "Employee Name"
+    //   },
+    //   {
+    //     "columnName": "city",
+    //     "order": 8,
+    //     "locked": false,
+    //     "visible": true
+    //   },
+    //   {
+    //     "columnName": "state",
+    //     "order": 7,
+    //     "locked": false,
+    //     "visible": true
+    //   },
+    //   {
+    //     "columnName": "country",
+    //     "order": 6,
+    //     "locked": false,
+    //     "visible": true
+    //   },
+    //   {
+    //     "columnName": "company",
+    //     "order": 5,
+    //     "locked": false,
+    //     "visible": true
+    //   },
+    //   {
+    //     "columnName": "favoriteNumber",
+    //     "order":  4,
+    //     "locked": false,
+    //     "visible": true,
+    //     "displayName": "Favorite Number"
+    //   }
+    // ];
+    
     return (
       <div>
-        <DataTable data={tableData}/>
+        <BootstrapTable />
+        {/* <Griddle results={fakeData} columnMetadata={exampleMetadata} showFilter={true}
+              showSettings={true} columns={["city", "state", "country"]}/> */}
+        {/* <DataTable data={tableData}/> */}
         <GMap/>
         <Timeline data={timelineData}/>
         <MainChart data={mainData}/>

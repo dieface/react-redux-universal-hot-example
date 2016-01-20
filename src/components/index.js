@@ -22,5 +22,6 @@ export Line from './Dashboard/Line';
 export TableSaw from './Dashboard/TableSaw';
 export DataTable from './Dashboard/DataTable';
 export GMap from './Map/GMap';
+export BootstrapTable from './Dashboard/BootstrapTable';
 
 export Timeline from './Dashboard/Timeline';

@@ -199,6 +199,41 @@ function getTableData() {
   return data;
 }
 
+function getGriddleData() {
+  const count = chance.integer({min: 100, max: 200});
+
+  const columns = [
+    "id",
+    "name",
+    "city",
+    "state",
+    "country",
+    "company",
+    "favoriteNumber"
+  ],
+  rows = [];
+
+  for (let i = 0; i < count; i++) {
+    const item = {
+      id: i,
+      name: chance.name(),
+      city: chance.city(),
+      state: chance.city(),
+      country: chance.city(),
+      company: chance.city(),
+      favoriteNumber: rnd()
+    };
+
+    rows.push(item);
+  }
+
+  // const data = {},
+  // data["columns"] = columns;
+  // data["rows"] = rows;
+
+  return rows;
+}
+
 export default function gender() {
   return new Promise((resolve) => {
     resolve({
@@ -225,7 +260,8 @@ export default function gender() {
       donut: getDonutData(),
       line: getLineData(),
       timeline: getTimelineData(),
-      table: getTableData()
+      table: getTableData(),
+      griddle: getGriddleData()
     });
   });
 }
